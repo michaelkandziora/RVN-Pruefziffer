@@ -1,0 +1,23 @@
+# depslib dependency file v1.0
+1547656997 source:c:\users\ich\documents\codeblocks\programmierenincpp\rvn_checksum\main.c
+	<stdio.h>
+	<stdlib.h>
+	"rvn_checksum.h"
+
+1547657217 source:c:\users\ich\documents\codeblocks\programmierenincpp\rvn_checksum\rvn_checksum.c
+	<stdio.h>
+	<stdlib.h>
+	<windows.h>
+	<direct.h>
+	<io.h>
+	"rvn_checksum.h"
+
+1547656656 c:\users\ich\documents\codeblocks\programmierenincpp\rvn_checksum\rvn_checksum.c
+	<stdio.h>
+	<stdlib.h>
+	<windows.h>
+	<direct.h>
+	<io.h>
+
+1547657199 c:\users\ich\documents\codeblocks\programmierenincpp\rvn_checksum\rvn_checksum.h
+

@@ -9,9 +9,9 @@ Beinhaltet:
 
 # Aufbau der 12 stelligen RVN
 
-Bereichsnummer | Geburtsdatum | 1.Buchstb-Nachname | Geschlecht (M 00-49 W 50-99)  | Prüfziffer
------------------------------------------------------------------------------------------------
- X_1  X_2      |  T T M M J J |     C              |      Y_1 Y_2                  |    P
+| Bereichsnummer | Geburtsdatum | 1.Buchstb-Nachname | Geschlecht (M 00-49 W 50-99)  | Prüfziffer |
+|----------------|--------------|--------------------|-------------------------------|------------|
+|   X_1  X_2     |  T T M M J J |         C          |          Y_1 Y_2              |      P     |
  
  # Berechnung der Prüfziffer
  

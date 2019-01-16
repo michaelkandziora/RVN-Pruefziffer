@@ -7,7 +7,7 @@ char* rvn_init(void);
 void plott_head(char* title);
 void plott_title(char* title);
 void start_menu(void);
-void rvn_read(char* rvn);
+int rvn_read(char* rvn);
 void rvn_checksum(char* rvn);
 void rvn_print(char* rvn);
 void rvn_dataOutput(char* rvn);

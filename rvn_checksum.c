@@ -36,7 +36,7 @@ void start(void){
 
     fflush(stdin);
     // Programm Ueberschrift
-    plott_head("RVN Pruefuuuuuuuuung");
+    plott_head("Rentenversicherungsnummer ");
 
     // Zeilenumbruch
     printf("\n");
@@ -176,28 +176,50 @@ void start_menu(void){
         // Aufruf je nach Auswahl
         switch(c){
         case '1':
+            {
             // RVN einlesen
             plott_title("RVN EINLESEN");
             blue_print("System"," LOG[Rufe RVN_READ(*) auf]");
-            rvn_read(rvn);
-            // Ab hier sind alle Pruefungen erfolgreich beendet und die RVN Prueffunktion kann aufgerufen werden
-            blue_print("System"," LOG[Rufe RVN_CHECKSUM(*) auf]");
-            rvn_checksum(rvn);
-            // RVN Daten ausgeben
-            plott_title("RVN PRUEFUNG ABGESCHLOSSEN");
-            blue_print("System"," LOG[Rufe RVN_DATAOUTPUT(*) auf]");
-            rvn_dataOutput(rvn);
+            if(rvn_read(rvn)){
+                // Ab hier sind alle Pruefungen erfolgreich beendet und die RVN Prueffunktion kann aufgerufen werden
+                blue_print("System"," LOG[Rufe RVN_CHECKSUM(*) auf]");
+                rvn_checksum(rvn);
+                // RVN Daten ausgeben
+                plott_title("RVN PRUEFUNG ABGESCHLOSSEN");
+                blue_print("System"," LOG[Rufe RVN_DATAOUTPUT(*) auf]");
+                rvn_dataOutput(rvn);
+
+                blue_print("System"," Zurueck ins Startmenue? [J]/[N]\n");
+                green_print("Eingabe"," ");
+                scanf("%c",c);
+                if(c == 'N'){
+                    c = 'q';
+                    exit(0);
+                }
+            }
             break;
+            }
         case '2':
+            {
             // RVN einlesen
             plott_title("RVN EINLESEN");
             blue_print("System"," LOG[Rufe RVN_READ(*) auf]");
-            rvn_read(rvn);
-            // RVN Daten ausgeben
-            plott_title("RVN DATEN");
-            blue_print("System"," LOG[Rufe RVN_DATAOUTPUT(*) auf]");
-            rvn_dataOutput(rvn);
+            if(rvn_read(rvn)){
+                // RVN Daten ausgeben
+                plott_title("RVN DATEN");
+                blue_print("System"," LOG[Rufe RVN_DATAOUTPUT(*) auf]");
+                rvn_dataOutput(rvn);
+
+                blue_print("System"," Zurueck ins Startmenue? [J]/[N]\n");
+                green_print("Eingabe"," ");
+                scanf("%c",c);
+                if(c == 'N'){
+                    c = 'q';
+                    exit(0);
+                }
+            }
             break;
+            }
         case 'q':
         case 'Q':
             c = 'q';
@@ -217,7 +239,7 @@ void start_menu(void){
 }
 
 /** FUNKTION ZUM EINLESEN DER RVN **/
-void rvn_read(char* rvn){
+int rvn_read(char* rvn){
     blue_print("System"," LOG[Starte RVN_READ(*)]\n");
 
     // Ausgabe: Initialisierung
@@ -234,14 +256,14 @@ void rvn_read(char* rvn){
         // Einlesen der Character
         scanf("%c",&rvn[i]);
 
-        // Abbrechen mit q
-        if(rvn[0] == 'q'){
+        // Abbrechen mit 0
+        if(rvn[0] == '0'){
             error_print("ERROR"," System abort");
-            error_print("System"," Programm wird neugestartet");
+            error_print("System"," Hauptmenue wird aufgerufen");
 
             fflush(stdin);
             // Rekursiver Aufruf der Funktion
-            return start();
+            return 0;
             break;
         }
 
@@ -350,11 +372,11 @@ void rvn_checksum(char* rvn){
         // Pruefe ob Buchstabe
         if(i==RVN_LETTER_POS){
             // Ziehe vom ASCII Wert 64 ab um auf dem Buchstabenzaehler zu landen (A=65.. -64, A = 1. Buchstabe)
-            *checkDigit += (significand[i]/10)*((rvn[i]-64)/10);
-            *checkDigit += (significand[i]%10)*((rvn[i]-64)%10);
+            *checkDigit += ((significand[i]/10)*((rvn[i]-64)/10))/10 + ((significand[i]/10)*((rvn[i]-64)/10))%10;
+            *checkDigit += ((significand[i]%10)*((rvn[i]-64)%10))/10 + ((significand[i]%10)*((rvn[i]-64)%10))%10;
         }else{
             // Ziehe vom ASCII Wert 48 ab um auf 0 zu landen (0=48.. -48, 0 = 0)
-            *checkDigit += significand[i]*(rvn[i]-48);
+            *checkDigit += (significand[i]*(rvn[i]-48))/10 + (significand[i]*(rvn[i]-48))%10;
         }
         // Zeige Fortschritt in der Ausgabe an
         SetColor(3);

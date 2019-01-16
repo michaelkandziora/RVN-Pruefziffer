@@ -11,7 +11,7 @@ Beinhaltet:
 
 Bereichs- | Geburtsdatum | 1.Buchstb- | Geschlecht      | Prüfziffer
 nummer    |              | Nachname   | M 00-49 W 50-99 | 
-//---------------------------------------------------------------------
+
  X_1  X_2 |  T T M M J J |     C      |    Y_1 Y_2      |    P
  
  # Berechnung der Prüfziffer

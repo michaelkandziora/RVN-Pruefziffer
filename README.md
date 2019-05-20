@@ -1,6 +1,6 @@
 ## RVN-Pruefziffer
 
-Ein kleines C-Programm zur Überprüfung der Deutschen Rentenversicherungsnummer
+Ein kleines C-Programm zur Überprüfung der deutschen Rentenversicherungsnummer
 
 Beinhaltet:
 - Berechnung der Prüfziffer
